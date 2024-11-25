@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">ScanPoint</string>
+    <string name="toolbar_text">Hey!</string>
+    <string name="toolbar_text_1">Welcome Back</string>
+    <string name="no_events_message">There are no events yet.</string>
+    <string name="no_events_message_1">Add an Event Now!</string>
+    <string name="login_header">Welcome to</string>
+    <string name="login_header_1">ScanPoint!</string>
+    <string name="login_subheader">STI Global City’s Events App</string>
+    <string name="login_cardview_header">Login</string>
+
+    <string name="input_hint_1">Student No. (2000xxxxxx)</string>
+    <string name="input_hint_2">Password</string>
+
+
+
+
+
+</resources>
