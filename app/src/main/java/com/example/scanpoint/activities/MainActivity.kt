@@ -12,6 +12,7 @@ import com.example.scanpoint.bottom_fragment.NotificationFragment
 import com.example.scanpoint.bottom_fragment.ProfileFragment
 import com.example.scanpoint.bottom_fragment.RewardsFragment
 import com.example.scanpoint.databinding.ActivityMainBinding
+import com.example.scanpoint.databinding.ToolbarTitleBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -19,10 +20,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
     private lateinit var navigationView: BottomNavigationView
     private lateinit var fab:FloatingActionButton
+    private lateinit var toolbarTitleBinding: ToolbarTitleBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        toolbarTitleBinding = ToolbarTitleBinding.bind(binding.root)
         setContentView(binding.root)
 
         fab = findViewById(R.id.fab)
@@ -40,12 +43,34 @@ class MainActivity : AppCompatActivity() {
 
         navigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.nav_home -> replace(HomeFragment())
-                R.id.nav_user -> replace(ProfileFragment())
-                R.id.nav_rewards -> replace(RewardsFragment())
-                R.id.nav_notification -> replace(NotificationFragment())
+                R.id.nav_home -> {
+                    replace(HomeFragment())
+                    toolbarTitleBinding.toolbarTitle.text ="Hey!"
+                    toolbarTitleBinding.toolbarSubtitle.text ="Welcome Back"
+
+                }
+                R.id.nav_user -> {
+                    replace(ProfileFragment())
+                    toolbarTitleBinding.toolbarTitle.text ="Profile"
+                    toolbarTitleBinding.toolbarSubtitle.text ="Information"
+                }
+                R.id.nav_rewards -> {
+                    replace(RewardsFragment())
+                    toolbarTitleBinding.toolbarTitle.text ="Rewards"
+                    toolbarTitleBinding.toolbarSubtitle.text ="Your Achievements"
+                }
+                R.id.nav_notification -> {
+                    replace(NotificationFragment())
+                    toolbarTitleBinding.toolbarTitle.text ="Notifications"
+                    toolbarTitleBinding.toolbarSubtitle.text ="Stay updated!"
+                }
             }
             true
+        }
+        toolbarTitleBinding.includeToolbar.setOnApplyWindowInsetsListener { view, insets ->
+            // Apply padding to the top for the status bar
+            view.updatePadding(top = insets.systemWindowInsetTop)
+            insets
         }
 
         binding.bottomAppBar.setOnApplyWindowInsetsListener { view, insets ->
