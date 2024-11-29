@@ -22,6 +22,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="22sp"
+                    android:layout_marginLeft="10dp"
                     android:singleLine="true"
                     android:fontFamily="@font/inter_extrabold"
                     android:textColor="@color/yellow"
@@ -32,6 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="24sp"
+                    android:layout_marginLeft="10dp"
                     android:fontFamily="@font/inter_bold"
                     android:textColor="@color/yellow"
                     android:text="@string/toolbar_text_1" />
@@ -39,10 +41,12 @@
 
             <ImageView
                 android:id="@+id/iv_toolbar_trophy"
-                android:layout_width="79dp"
+                android:layout_width="81dp"
                 android:layout_height="81dp"
                 android:background="@drawable/trophy"
-                android:layout_margin="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_gravity="end" />
 
         </androidx.appcompat.widget.Toolbar>
