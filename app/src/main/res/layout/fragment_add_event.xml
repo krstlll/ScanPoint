@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".bottom_fragment.AddEventFragment">
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+       <androidx.cardview.widget.CardView
+           android:id="@+id/cardView_addEvent"
+           android:layout_width="match_parent"
+           android:layout_height="900dp"
+           android:layout_marginTop="200dp"
+           app:cardCornerRadius="41dp"
+           android:backgroundTint="@color/white"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent">
+
+           <androidx.constraintlayout.widget.ConstraintLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+
+               <TextView
+                   android:id="@+id/tv_addEvent"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:fontFamily="@font/inter_bold"
+                   android:text="Add Event"
+                   android:textColor="@color/blue"
+                   android:textSize="22sp"
+                   app:layout_constraintBottom_toTopOf="@id/til_eventName"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <ImageView
+                   android:id="@+id/img_add"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="80dp"
+                   android:src="@drawable/add"
+                   app:layout_constraintEnd_toStartOf="@+id/til_eventDate"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <com.google.android.material.textfield.TextInputLayout
+                   android:id="@+id/til_eventName"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="60dp"
+                   android:layout_marginTop="50dp"
+                   android:layout_marginEnd="30dp"
+                   android:hint="@string/input_hint_5"
+                   app:boxBackgroundMode="outline"
+                   app:boxStrokeColor="@color/blue"
+                   app:errorEnabled="true"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="@id/tv_addEvent">
+
+                   <com.google.android.material.textfield.TextInputEditText
+                       android:id="@+id/et_eventName"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:inputType="textEmailAddress" />
+               </com.google.android.material.textfield.TextInputLayout>
+
+               <ImageView
+                   android:id="@+id/img_calendar"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="45dp"
+                   android:src="@drawable/calendar"
+                   app:layout_constraintEnd_toStartOf="@+id/til_eventDate"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@id/img_add" />
+
+               <com.google.android.material.textfield.TextInputLayout
+                   android:id="@+id/til_eventDate"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="60dp"
+                   android:layout_marginEnd="30dp"
+                   android:hint="@string/input_hint_4"
+                   app:boxBackgroundMode="outline"
+                   app:boxStrokeColor="@color/blue"
+                   app:errorEnabled="true"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@id/til_eventName">
+
+                   <com.google.android.material.textfield.TextInputEditText
+                       android:id="@+id/et_eventDate"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:inputType="textEmailAddress" />
+               </com.google.android.material.textfield.TextInputLayout>
+
+
+               <ImageView
+                   android:id="@+id/img_location"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="50dp"
+                   android:src="@drawable/map_pin"
+                   app:layout_constraintEnd_toStartOf="@+id/til_eventDate"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@id/img_calendar" />
+
+               <com.google.android.material.textfield.TextInputLayout
+                   android:id="@+id/til_location"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="60dp"
+                   android:layout_marginEnd="30dp"
+                   android:hint="@string/input_hint_3"
+                   app:boxBackgroundMode="outline"
+                   app:boxStrokeColor="@color/blue"
+                   app:errorEnabled="true"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@id/til_eventDate">
+
+                   <com.google.android.material.textfield.TextInputEditText
+                       android:id="@+id/et_location"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:inputType="textEmailAddress" />
+               </com.google.android.material.textfield.TextInputLayout>
+
+               <androidx.appcompat.widget.AppCompatButton
+                   android:id="@+id/btn_add_event"
+                   android:layout_width="250dp"
+                   android:layout_height="wrap_content"
+                   android:layout_marginBottom="520dp"
+                   android:background="@drawable/bg_button"
+                   android:fontFamily="@font/inter_bold"
+                   android:text="@string/btn_add_event"
+                   android:textColor="@color/yellow"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent" />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="70dp"
+                   android:fontFamily="@font/inter_bold"
+                   android:text="@string/btn_cancel"
+                   android:textColor="@color/blue"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@id/btn_add_event" />
+
+
+           </androidx.constraintlayout.widget.ConstraintLayout>
+
+       </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

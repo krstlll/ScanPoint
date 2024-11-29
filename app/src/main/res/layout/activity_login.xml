@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".activities.LoginActivity"
     android:background="@color/blue">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -55,7 +55,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="600dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll_login_header"
         android:layout_marginTop="100dp"
@@ -86,7 +86,6 @@
                 android:layout_marginEnd="30dp"
                 android:hint="@string/input_hint_1"
                 app:boxStrokeColor="@color/blue"
-                app:boxHintTextColor="@color/light_gray"
                 app:boxBackgroundMode="outline"
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -6,6 +6,7 @@
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/include_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/blue">
@@ -16,7 +17,7 @@
                 android:orientation="vertical"
                 android:layout_gravity="start">
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <TextView
                     android:id="@+id/toolbar_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -24,20 +25,20 @@
                     android:singleLine="true"
                     android:fontFamily="@font/inter_extrabold"
                     android:textColor="@color/yellow"
-                    android:text="@string/toolbar_text"
-/>
+                    android:text="@string/toolbar_text" />
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <TextView
                     android:id="@+id/toolbar_subtitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="24sp"
                     android:fontFamily="@font/inter_bold"
                     android:textColor="@color/yellow"
-                    android:text="@string/toolbar_text_1"/>
+                    android:text="@string/toolbar_text_1" />
             </LinearLayout>
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <ImageView
+                android:id="@+id/iv_toolbar_trophy"
                 android:layout_width="79dp"
                 android:layout_height="81dp"
                 android:background="@drawable/trophy"
