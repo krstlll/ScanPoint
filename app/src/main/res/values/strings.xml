@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">ScanPoint</string>
+
     <string name="toolbar_text">Hey!</string>
     <string name="toolbar_text_1">Welcome Back</string>
+
     <string name="no_events_message">There are no events yet.</string>
     <string name="no_events_message_1">Add an Event Now!</string>
+
     <string name="login_header">Welcome to</string>
     <string name="login_header_1">ScanPoint!</string>
     <string name="login_subheader">STI Global City’s Events App</string>
@@ -12,8 +15,18 @@
     <string name="input_hint_1">Student No. (2000xxxxxx)</string>
     <string name="input_hint_2">Password</string>
 
+    <string name="nav_home">Home</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_rewards">Rewards</string>
+    <string name="nav_notifications">Notifications</string>
 
-
+    <string name="btn_cancel">CANCEL</string>
+    <string name="btn_add_event">ADD EVENT</string>
+    <string name="input_hint_3">Venue</string>
+    <string name="input_hint_4"> Event Date</string>
+    <string name="input_hint_5">Event Name</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
