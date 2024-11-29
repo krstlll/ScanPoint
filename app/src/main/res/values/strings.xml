@@ -11,6 +11,15 @@
     <string name="login_header_1">ScanPoint!</string>
     <string name="login_subheader">STI Global City’s Events App</string>
     <string name="login_cardview_header">Login</string>
+    <string name="login_signup">Don\'t have an account yet?</string>
+
+
+    <string name="signup_cardview_header">Sign Up</string>
+    <string name="signup_input_hint_1">Name</string>
+    <string name="signup_input_hint_2">Re-Enter Password</string>
+    <string name="signup_input_hint_3">Email</string>
+    <string name="login_message">Login to your account</string>
+
 
     <string name="input_hint_1">Student No. (2000xxxxxx)</string>
     <string name="input_hint_2">Password</string>

@@ -10,36 +10,24 @@ import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
-import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.scanpoint.R
-import com.example.scanpoint.databinding.ActivityLoginBinding
 import com.example.scanpoint.databinding.ActivitySignUpBinding
 
-class LoginActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityLoginBinding
+class SignUpActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySignUpBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val loginButton = findViewById<Button>(R.id.btn_login)
-
-
-
-        loginButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        binding.tvSignUp.apply {
-            text = addClickableLink("Sign Up", "Sign Up") {
-                SignUpActivity.launch(this@LoginActivity)
+        binding.tvLogin.apply {
+            text = addClickableLink("Login to your account?", "Login to your account?") {
+                LoginActivity.launch(this@SignUpActivity)
             }
 
             movementMethod = LinkMovementMethod.getInstance()
@@ -68,9 +56,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    companion object {
-        fun launch (activity : Activity) {
-            activity.startActivity(Intent(activity, LoginActivity::class.java))
+        companion object {
+            fun launch (activity : Activity) {
+                activity.startActivity(Intent(activity, SignUpActivity::class.java))
+            }
         }
-    }
 }
