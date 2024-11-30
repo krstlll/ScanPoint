@@ -34,7 +34,17 @@
     <string name="input_hint_3">Venue</string>
     <string name="input_hint_4"> Event Date</string>
     <string name="input_hint_5">Event Name</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="event_sample_1">Christmas Party</string>
+    <string name="event_sample_2">13/12/2024</string>
+    <string name="event_sample_3">Gym</string>
+    <string name="btn_back">BACK</string>
+
+
+
+
+
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 

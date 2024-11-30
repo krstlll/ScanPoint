@@ -20,8 +20,9 @@ import com.example.scanpoint.states.AuthenticationStates
 import com.example.scanpoint.viewmodels.ViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -91,7 +92,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         toolbarTitleBinding.includeToolbar.setOnApplyWindowInsetsListener { view, insets ->
-            // Apply padding to the top for the status bar
             view.updatePadding(top = insets.systemWindowInsetTop)
             insets
         }
