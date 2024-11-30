@@ -69,6 +69,7 @@
                 app:layout_constraintEnd_toEndOf="parent">
 
                 <ImageView
+                    android:id="@+id/iv_qr_holder"
                     android:layout_width="280dp"
                     android:layout_height="280dp"
                     android:layout_gravity="center"
@@ -92,6 +93,7 @@
                    app:tint="@color/gray"
                    android:layout_gravity="center"/>
                <TextView
+                   android:id="@+id/tv_event_date"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="@string/event_sample_2"
@@ -118,6 +120,7 @@
                     app:tint="@color/gray"
                     android:layout_gravity="center"/>
                 <TextView
+                    android:id="@+id/tv_event_venue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/event_sample_3"
@@ -130,7 +133,7 @@
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_add_event"
+                android:id="@+id/btn_back"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="100dp"
