@@ -21,7 +21,7 @@
     <string name="login_message">Login to your account</string>
 
 
-    <string name="input_hint_1">Student No. (2000xxxxxx)</string>
+    <string name="input_hint_1">Student No.</string>
     <string name="input_hint_2">Password</string>
 
     <string name="nav_home">Home</string>

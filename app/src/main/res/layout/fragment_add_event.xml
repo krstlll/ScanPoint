@@ -68,8 +68,7 @@
                    <com.google.android.material.textfield.TextInputEditText
                        android:id="@+id/et_eventName"
                        android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:inputType="textEmailAddress" />
+                       android:layout_height="wrap_content" />
                </com.google.android.material.textfield.TextInputLayout>
 
                <ImageView
@@ -99,8 +98,7 @@
                    <com.google.android.material.textfield.TextInputEditText
                        android:id="@+id/et_eventDate"
                        android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:inputType="textEmailAddress" />
+                       android:layout_height="wrap_content" />
                </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -131,8 +129,7 @@
                    <com.google.android.material.textfield.TextInputEditText
                        android:id="@+id/et_location"
                        android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:inputType="textEmailAddress" />
+                       android:layout_height="wrap_content" />
                </com.google.android.material.textfield.TextInputLayout>
 
                <androidx.appcompat.widget.AppCompatButton
@@ -148,22 +145,9 @@
                    app:layout_constraintEnd_toEndOf="parent"
                    app:layout_constraintStart_toStartOf="parent" />
 
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_marginTop="70dp"
-                   android:fontFamily="@font/inter_bold"
-                   android:text="@string/btn_cancel"
-                   android:textColor="@color/blue"
-                   app:layout_constraintEnd_toEndOf="parent"
-                   app:layout_constraintStart_toStartOf="parent"
-                   app:layout_constraintTop_toBottomOf="@id/btn_add_event" />
-
-
            </androidx.constraintlayout.widget.ConstraintLayout>
 
        </androidx.cardview.widget.CardView>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "432875358912",
+    "firebase_url": "https://scan-point-default-rtdb.asia-southeast1.firebasedatabase.app/",
+    "project_id": "scan-point",
+    "storage_bucket": "scan-point.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432875358912:android:6677bdc96051fd4536fb25",
+        "android_client_info": {
+          "package_name": "com.example.scanpoint"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMRMW1taAOCvW2mLINSaMVjIyuGiJIY44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

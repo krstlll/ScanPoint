@@ -9,15 +9,70 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <TextView
+            android:id="@+id/tv_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="PROFILE"
+            android:textSize="24sp"
+            android:layout_marginTop="150dp"
+            android:layout_marginStart="28dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:fontFamily="@font/inter_bold"/>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name:"
+            app:layout_constraintStart_toStartOf="@id/tv_profile"
+            app:layout_constraintTop_toBottomOf="@id/tv_profile"
+            android:fontFamily="@font/inter_bold"/>
+
+        <TextView
+            android:id="@+id/tv_name_fr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yves"
+            app:layout_constraintStart_toEndOf="@id/tv_name"
+            app:layout_constraintTop_toTopOf="@id/tv_name"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/inter_bold"/>
+
+        <TextView
+            android:id="@+id/tv_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student No:"
+            app:layout_constraintStart_toStartOf="@id/tv_profile"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            android:fontFamily="@font/inter_bold"/>
+
+
+        <TextView
+            android:id="@+id/tv_id_fr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="202101382"
+            app:layout_constraintStart_toEndOf="@id/tv_id"
+            app:layout_constraintTop_toTopOf="@id/tv_id"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/inter_bold"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_logout"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_button"
+            android:text="LOGOUT"
+            android:textColor="@color/yellow"
+            android:fontFamily="@font/inter_bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_id_fr"
+            app:layout_constraintStart_toEndOf="@id/tv_id_fr"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

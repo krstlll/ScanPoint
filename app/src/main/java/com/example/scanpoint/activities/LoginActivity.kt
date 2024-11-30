@@ -11,30 +11,35 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.Button
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.scanpoint.R
 import com.example.scanpoint.databinding.ActivityLoginBinding
-import com.example.scanpoint.databinding.ActivitySignUpBinding
+import com.example.scanpoint.states.AuthenticationStates
+import com.example.scanpoint.viewmodels.ViewModel
 
 class LoginActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var viewModel : ViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        viewModel = ViewModel()
+        viewModel.getState().observe(this@LoginActivity) {
+            renderUi(it)
+        }
+
+
         val loginButton = findViewById<Button>(R.id.btn_login)
 
-
-
         loginButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            val email = binding.etStudentNumber.text.toString()
+            val password = binding.etPassword.text.toString()
+
+            viewModel.signIn(email, password)
         }
 
         binding.tvSignUp.apply {
@@ -43,6 +48,29 @@ class LoginActivity : AppCompatActivity() {
             }
 
             movementMethod = LinkMovementMethod.getInstance()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.isUserSignedIn()
+    }
+
+    private fun renderUi (it: AuthenticationStates) {
+        when(it) {
+            is AuthenticationStates.AlreadySignedIn -> {
+                if (it.alreadySignedIn) {
+                    MainActivity.launch(this@LoginActivity)
+                    finish()
+                }
+            }
+
+            is AuthenticationStates.SignedIn -> {
+                MainActivity.launch(this@LoginActivity)
+                finish()
+            }
+
+            else -> {}
         }
     }
 
