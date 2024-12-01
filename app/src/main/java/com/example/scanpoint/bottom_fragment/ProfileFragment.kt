@@ -55,6 +55,8 @@ class ProfileFragment : Fragment() {
             renderUi(state)
         }
 
+        viewModel.getUserInfo()
+
         binding.btnLogout.setOnClickListener {
             viewModel.signOut()
         }
