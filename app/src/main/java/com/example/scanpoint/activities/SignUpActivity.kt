@@ -12,7 +12,7 @@ import android.text.style.ClickableSpan
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.scanpoint.databinding.ActivitySignUpBinding
-import com.example.scanpoint.states.AuthenticationStates
+import com.example.scanpoint.states.States
 import com.example.scanpoint.viewmodels.ViewModel
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.auth.ktx.auth
@@ -110,9 +110,9 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    private fun renderUi (it: AuthenticationStates) {
+    private fun renderUi (it: States) {
         when(it) {
-            is AuthenticationStates.SignedUp -> {
+            is States.SignedUp -> {
                 val uid = auth.currentUser?.uid.toString()
 
                 viewModel.createUserRecord(
@@ -125,7 +125,7 @@ class SignUpActivity : AppCompatActivity() {
                 viewModel.signOut()
             }
 
-            is AuthenticationStates.SignedOut -> {
+            is States.SignedOut -> {
                 LoginActivity.launch(this@SignUpActivity)
                 finish()
             }

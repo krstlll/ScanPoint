@@ -14,7 +14,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.scanpoint.R
 import com.example.scanpoint.databinding.ActivityLoginBinding
-import com.example.scanpoint.states.AuthenticationStates
+import com.example.scanpoint.states.States
 import com.example.scanpoint.viewmodels.ViewModel
 
 class LoginActivity : AppCompatActivity() {
@@ -56,16 +56,16 @@ class LoginActivity : AppCompatActivity() {
         viewModel.isUserSignedIn()
     }
 
-    private fun renderUi (it: AuthenticationStates) {
+    private fun renderUi (it: States) {
         when(it) {
-            is AuthenticationStates.AlreadySignedIn -> {
+            is States.AlreadySignedIn -> {
                 if (it.alreadySignedIn) {
                     MainActivity.launch(this@LoginActivity)
                     finish()
                 }
             }
 
-            is AuthenticationStates.SignedIn -> {
+            is States.SignedIn -> {
                 MainActivity.launch(this@LoginActivity)
                 finish()
             }

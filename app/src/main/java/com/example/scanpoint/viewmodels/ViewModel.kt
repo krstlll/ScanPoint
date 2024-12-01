@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.scanpoint.models.EventModel
 import com.example.scanpoint.models.UserModel
-import com.example.scanpoint.states.AuthenticationStates
+import com.example.scanpoint.states.States
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -17,18 +17,20 @@ import java.util.UUID
 
 class ViewModel: ViewModel() {
 
-    private val authenticationStates = MutableLiveData<AuthenticationStates>()
+    private val states = MutableLiveData<States>()
 
     private val auth = Firebase.auth
     private var database = Firebase.database.reference
 
-    fun getState() : LiveData<AuthenticationStates> = authenticationStates
+    private var eventsList = ArrayList<EventModel>()
+
+    fun getState() : LiveData<States> = states
 
     fun isUserSignedIn() {
         if (auth.currentUser != null) {
-            authenticationStates.value = AuthenticationStates.AlreadySignedIn(true)
+            states.value = States.AlreadySignedIn(true)
         } else {
-            authenticationStates.value = AuthenticationStates.AlreadySignedIn(false)
+            states.value = States.AlreadySignedIn(false)
         }
     }
 
@@ -36,13 +38,13 @@ class ViewModel: ViewModel() {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    authenticationStates.value = AuthenticationStates.SignedUp
+                    states.value = States.SignedUp
                 } else {
-                    authenticationStates.value = AuthenticationStates.Error
+                    states.value = States.Error
                 }
             }
             .addOnFailureListener {
-                authenticationStates.value = AuthenticationStates.Error
+                states.value = States.Error
             }
     }
 
@@ -63,11 +65,11 @@ class ViewModel: ViewModel() {
         val objectListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val user = snapshot.getValue<UserModel>()
-                authenticationStates.value = AuthenticationStates.Default(user)
+                states.value = States.Default(user)
             }
 
             override fun onCancelled(error: DatabaseError) {
-                authenticationStates.value = AuthenticationStates.Error
+                states.value = States.Error
             }
         }
 
@@ -77,19 +79,19 @@ class ViewModel: ViewModel() {
     fun signIn(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
             if (it.isSuccessful) {
-                authenticationStates.value = AuthenticationStates.SignedIn
+                states.value = States.SignedIn
             } else {
-                authenticationStates.value = AuthenticationStates.Error
+                states.value = States.Error
 
             }
         }.addOnFailureListener {
-            authenticationStates.value = AuthenticationStates.Error
+            states.value = States.Error
         }
     }
 
     fun signOut() {
         auth.signOut()
-        authenticationStates.value = AuthenticationStates.SignedOut
+        states.value = States.SignedOut
     }
 
     fun createEvent(eventName: String, eventDate: String, eventVenue: String) {
@@ -104,7 +106,69 @@ class ViewModel: ViewModel() {
         )
 
         database.setValue(event).addOnCompleteListener {
-            authenticationStates.value = AuthenticationStates.EventCreateSuccess
+            states.value = States.EventCreateSuccess
         }
+    }
+
+    fun fetchEvents() {
+        val listener = object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                eventsList.clear()
+
+                for(data in snapshot.children) {
+                    data.getValue<EventModel>()?.let { eventsList.add(it) }
+                }
+
+                states.value = States.EventsFetchSuccess(eventsList)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        }
+
+        database.child("/event").addValueEventListener(listener)
+    }
+
+    fun fetchEvenDetails(eventId: String) {
+        val objectListener = object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val event = snapshot.getValue<EventModel>()
+                states.value = States.EventDetailsFetched(event)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        }
+
+        database.child("/event/$eventId").addValueEventListener(objectListener)
+    }
+
+    fun registerUser(uid: String, eventUid: String) {
+        val database = database.child("event/$eventUid/attendees")
+
+        database.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    println("User $uid is already registered for event $eventUid.")
+                } else {
+                    val user = mapOf(
+                        "uid" to uid,
+                    )
+                    database.setValue(user).addOnSuccessListener {
+                        println("User $uid successfully registered for event $eventUid.")
+                        states.value = States.RegisterSuccess
+                    }.addOnFailureListener { exception ->
+                        println("Failed to register user: ${exception.message}")
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                println("Error checking for user: ${error.message}")
+            }
+        })
     }
 }

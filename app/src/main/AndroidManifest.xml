@@ -17,7 +17,7 @@
         android:theme="@style/Theme.ScanPoint"
         tools:targetApi="31">
         <activity
-            android:name=".activities.EventaDetailsActivity"
+            android:name=".activities.EventDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".activities.SignUpActivity"

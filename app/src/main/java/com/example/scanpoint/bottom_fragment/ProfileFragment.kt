@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.scanpoint.activities.LoginActivity
 import com.example.scanpoint.databinding.FragmentProfileBinding
-import com.example.scanpoint.states.AuthenticationStates
+import com.example.scanpoint.states.States
 import com.example.scanpoint.viewmodels.ViewModel
 
 // TODO: Rename parameter arguments, choose names that match
@@ -60,9 +60,9 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun renderUi(state: AuthenticationStates) {
+    private fun renderUi(state: States) {
         when (state) {
-            is AuthenticationStates.Default -> {
+            is States.Default -> {
                 val user = state.user
 
                 if (user != null) {
@@ -71,7 +71,7 @@ class ProfileFragment : Fragment() {
                 }
             }
 
-            is AuthenticationStates.SignedOut -> {
+            is States.SignedOut -> {
                 val context = requireContext()
                 val intent = Intent(context, LoginActivity::class.java)
                 startActivity(intent)

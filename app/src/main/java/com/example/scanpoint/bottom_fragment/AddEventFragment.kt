@@ -1,21 +1,16 @@
 package com.example.scanpoint.bottom_fragment
 
 import android.app.DatePickerDialog
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.example.scanpoint.R
-import com.example.scanpoint.activities.LoginActivity
 import com.example.scanpoint.databinding.FragmentAddEventBinding
-import com.example.scanpoint.databinding.FragmentProfileBinding
-import com.example.scanpoint.states.AuthenticationStates
+import com.example.scanpoint.states.States
 import com.example.scanpoint.viewmodels.ViewModel
 import java.util.Calendar
 
@@ -87,9 +82,9 @@ class AddEventFragment : Fragment() {
         return binding.root
     }
 
-    private fun renderUi(state: AuthenticationStates) {
+    private fun renderUi(state: States) {
         when (state) {
-            is AuthenticationStates.EventCreateSuccess -> {
+            is States.EventCreateSuccess -> {
                 binding.etEventName.setText("")
                 binding.etEventDate.setText("")
                 binding.etLocation.setText("")

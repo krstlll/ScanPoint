@@ -1,11 +1,19 @@
 package com.example.scanpoint.bottom_fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.scanpoint.R
+import com.example.scanpoint.activities.LoginActivity
+import com.example.scanpoint.adapters.EventAdapter
+import com.example.scanpoint.databinding.FragmentHomeBinding
+import com.example.scanpoint.states.States
+import com.example.scanpoint.viewmodels.ViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +30,10 @@ class HomeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var viewModel: ViewModel
+    private lateinit var binding: FragmentHomeBinding
+    private lateinit var adapter : EventAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -34,8 +46,40 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel = ViewModelProvider(requireActivity())[ViewModel::class.java]
+
+        viewModel.getState().observe(viewLifecycleOwner) { state ->
+            renderUi(state)
+        }
+
+        adapter = EventAdapter(requireContext(), ArrayList())
+        binding.rvEventList.apply {
+            layoutManager = LinearLayoutManager(requireContext()).apply {
+                reverseLayout = true
+                stackFromEnd = true
+            }
+            adapter = this@HomeFragment.adapter
+        }
+
+        viewModel.fetchEvents()
+    }
+
+    private fun renderUi(state: States) {
+        when (state) {
+            is States.EventsFetchSuccess -> {
+                adapter.updateEvents(state.list)
+            }
+
+            else -> {}
+        }
     }
 
     companion object {

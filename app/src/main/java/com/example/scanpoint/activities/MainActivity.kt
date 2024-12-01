@@ -16,7 +16,7 @@ import com.example.scanpoint.bottom_fragment.RewardsFragment
 import com.example.scanpoint.bottom_fragment.ScanFragment
 import com.example.scanpoint.databinding.ActivityMainBinding
 import com.example.scanpoint.databinding.ToolbarTitleBinding
-import com.example.scanpoint.states.AuthenticationStates
+import com.example.scanpoint.states.States
 import com.example.scanpoint.viewmodels.ViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -102,9 +102,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun renderUi (it: AuthenticationStates) {
+    private fun renderUi (it: States) {
         when(it) {
-            is AuthenticationStates.Default -> {
+            is States.Default -> {
                 if (auth.currentUser?.uid.toString() == "9nJEthWX6bOoSN4qlafsVqR7z0c2") {
                     fab.setImageResource(R.drawable.add)
                 }
